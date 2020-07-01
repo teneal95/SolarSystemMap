@@ -1,0 +1,157 @@
+/*custom font montserrat*/
+@font-face{
+  font-family: Montserrat;
+  src: url(Montserrat-ExtraLight.ttf);
+}
+html{
+  overflow: hidden;
+}
+/* Disable Highlighting of Content */
+*::selection
+{
+    background-color:transparent;
+}
+*::-moz-selection
+{
+    background-color:transparent;
+}
+*
+{
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    /*IE10*/
+    -ms-user-select: none;
+    user-select: none;
+}
+body{
+  margin: 0;
+  padding:0;
+  color: white;
+  background-color: black;
+  font-family: Montserrat, Verdana, Geneva, Tahoma, sans-serif;
+}
+/*Next/Previous toggle*/
+#togContainer{
+  position: absolute;
+  top: 100vh; /*Move to bottom of page*/ 
+  left: 50%;
+  min-width: 85px;
+  transform: translate(-50%, -100%); /*translate to centre bottom*/
+  z-index: 500; /*bring to foreground*/
+}
+.toggle{
+  color: white;
+  font-size: 18pt;
+  text-decoration: none;
+  float: left;
+  padding: 8px 15px;
+  font-weight: bold;
+  transition: ease 0.6s; /*hover style transition eased*/
+  cursor: pointer; /*pointer on hover*/
+}
+.toggle:hover{
+  background-color: rgb(80, 80, 80)
+}
+/* Styles for each slide */
+.container{
+  width: 100%; /*container for slides take up full viewport*/
+  height: 100vh;
+  position: absolute;
+  top: 0; 
+  left: 0; 
+}
+p {
+  font-size: 1.1vw;
+}
+.imgs{
+  height: 50vh;
+  position: absolute;
+  top: 50%;
+  margin-top: -25vh;
+  left: 5vw;
+}
+.paraGroup{
+  position: absolute;
+  width: 600px;
+  text-align: justify;
+  top: 50vh;
+  left: 65vw;
+  transform: translate(-50%, -50%);
+  opacity: 0; /*default opacity at 0, changed in app.js*/
+  transition: opacity  0.6s ease-in; /*when opacity changes, ease the transition*/
+}
+/*Styles for First slide */
+#sun1{
+  width: 1400px;
+  position: absolute;
+  top: 60%;
+  margin-top: -700px;
+  left: -1100px;
+}
+.title{
+  font-size: 30pt;
+  font-weight: 300;
+  position: relative;
+  top: 0;
+  left: -25%;
+}
+#sunText{
+  position: absolute;
+  width: 600px;
+  text-align: justify;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -60%);
+}
+/*Browser Size Alerts*/
+.alertContainer{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.alertMsg{
+  font-size: 14pt;
+  padding: 50px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* RESPONSIVE STYLES */
+/*responsive stlye stops slide 1 text from drifting out of viewport*/
+@media only screen and (max-width: 1350px) {
+  #sunText{
+    left: 670px;
+  }
+}
+/*Show alert message for widths smaller than 1100px */
+@media only screen and (max-width: 1100px) {
+  * {
+    visibility: hidden;
+  }
+  #widthMsg{ 
+    visibility: visible;
+    display: block;
+  }
+  .alertMsg{
+    visibility: visible;
+  }
+}
+/*Show alert message for heights smaller than 500px */ 
+@media only screen and (max-height: 500px) {
+  * {
+    visibility: hidden;
+  }
+  #heightMsg{ 
+    visibility: visible;
+    display: block;
+  }
+  .alertMsg{
+    visibility: visible;
+  }
+}
