@@ -1,5 +1,6 @@
 //Declare Vars
 let index = 1;
+let clickDisabled = false; 
 const slides = document.querySelectorAll('.container');
 const paragraphs = document.querySelectorAll('.paraGroup');
 const plus = document.querySelector('.next');
@@ -28,21 +29,38 @@ function loadEventListeners() {
 
 //Previous and Next Buttons
 function indexMinus() {
+  if (clickDisabled) {
+    return;
+  }
+  clickDisabled = true;
   index = index -1;
   if (index < 1) {
     index = 1; //if on first slide you cannot go back anymore
   } else {
     showLastSlide(index); //show last slide
   }
+  
+  setTimeout(function () {
+    clickDisabled = false;
+  }, 4000);
 
 }
 function indexPlus() {
+  if (clickDisabled) {
+    return;
+  } 
+  clickDisabled = true;
+  
   index = index + 1;
   if (index > 9) {
     index = 9; //if on last slide you cannot go forward anymore
   } else {
     showNextSlide(index); //show next slide
   }
+  
+  setTimeout(function() {
+    clickDisabled = false;
+  }, 4000);
 }
 
 // Display changes due to button pressed
